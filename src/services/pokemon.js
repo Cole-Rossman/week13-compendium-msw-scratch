@@ -6,9 +6,9 @@ export async function fetchCharacters() {
 
 export async function fetchSearchedCharacters(search) {
     const params = new URLSearchParams();
-    if (search) 
-        params.set('character', search);
-    const resp = await fetch(`https://thesimpsonsquoteapi.glitch.me/quotes?character=${params.toString()}`);
+    if (search) params.set('character', search);
+    
+    const resp = await fetch(`https://thesimpsonsquoteapi.glitch.me/quotes?count=20&${params.toString()}`);
     const data = await resp.json();
     return data;
     

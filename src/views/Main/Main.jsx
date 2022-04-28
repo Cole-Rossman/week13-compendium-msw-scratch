@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { fetchCharacters, fetchSearchedCharacters } from '../../services/pokemon'
 import mainstyle from './Main.css'
 import CharacterCard from '../../components/CharacterCard/CharacterCard'
+import SearchBar from '../../components/SearchBar/SearchBar'
 
 export default function Main() {
     const [characters, setCharacters] = useState([]);
@@ -37,6 +38,7 @@ export default function Main() {
   return (
     <div className={mainstyle.main}>
       {error && <p>{error}</p>}
+      <SearchBar query={search} setQuery={setSearch} callBack={searchHandler} />
       <ul className={style.characterlist}>
         {/* adding i(index) parameter will make it so that same keys will be unique. if no ids are present to use for key */}
         {characters.map((character, i) => (
