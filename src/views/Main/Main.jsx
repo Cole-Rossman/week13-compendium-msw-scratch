@@ -1,13 +1,14 @@
 import style from './Main.css'
 import { useState, useEffect } from 'react'
-import { fetchCharacters } from '../../services/pokemon'
-import mainStyle from './Main.css'
+import { fetchCharacters, fetchSearchedCharacters } from '../../services/pokemon'
+import mainstyle from './Main.css'
 import CharacterCard from '../../components/CharacterCard/CharacterCard'
 
 export default function Main() {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
     try {
@@ -23,10 +24,18 @@ export default function Main() {
     }
     }, []);
 
+    const searchHandler = async () => {
+      setLoading(true);
+      const searchData = await fetchSearchedCharacters(search);
+      setCharacters(searchData);
+      setLoading(false);
+      setSearch('');
+    }
+
     if (loading) return <h1>Loading...</h1>
 
   return (
-    <div className={mainStyle.main}>
+    <div className={mainstyle.main}>
       {error && <p>{error}</p>}
       <ul className={style.characterlist}>
         {/* adding i(index) parameter will make it so that same keys will be unique. if no ids are present to use for key */}
