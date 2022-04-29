@@ -33,9 +33,9 @@ export default function Main() {
       setSearch('');
     }
 
-    if (loading) return <h1>Loading...</h1>
-
-  return (
+    
+    return (
+    loading ? <h1>Loading...</h1> :
     <div className={mainstyle.main}>
       {error && <p>{error}</p>}
       <SearchBar query={search} setQuery={setSearch} callBack={searchHandler} />
