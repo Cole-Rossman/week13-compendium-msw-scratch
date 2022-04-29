@@ -1,12 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import CharacterCard from './CharacterCard';
+import { characterData } from '../../services/characterData'
 
-const characterData = {
-        quote: "Back in Edinburgh, we had a coal miners strike. All we wanted were hats with a wee light on top. Then one day the mine collapsed. No one made it out alive, not even Willie!",
-        character: "Groundskeeper Willie",
-        image: "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FGroundskeeperWillie.png?1497567512063",
-        characterDirection: "Right",
-}
 
 test('Should render a character information on card', () => {
     render(

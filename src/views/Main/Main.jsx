@@ -1,6 +1,6 @@
 import style from './Main.css'
 import { useState, useEffect } from 'react'
-import { fetchCharacters, fetchSearchedCharacters } from '../../services/pokemon'
+import { fetchCharacters, fetchSearchedCharacters } from '../../services/characters'
 import mainstyle from './Main.css'
 import CharacterCard from '../../components/CharacterCard/CharacterCard'
 import SearchBar from '../../components/SearchBar/SearchBar'
@@ -15,7 +15,6 @@ export default function Main() {
     try {
         const fetchData = async () => {
             const characterData = await fetchCharacters();
-            console.log(characterData);
             setCharacters(characterData);
             setLoading(false);
         }
