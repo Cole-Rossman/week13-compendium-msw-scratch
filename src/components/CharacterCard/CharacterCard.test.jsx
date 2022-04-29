@@ -11,7 +11,6 @@ test('Should render a character information on card', () => {
     render(
         <CharacterCard {...characterData} />
     )
-    const { character, quote } = characterData
         // for heading level 3 is h3 and level 4 is h4
     const characterName = screen.getByRole('heading', {level: 3 });
     expect(characterName).toBeInTheDocument();
