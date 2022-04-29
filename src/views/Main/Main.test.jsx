@@ -5,7 +5,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import { characterData, homer } from '../../services/characterData'
 
-const server = setupServer(
+export const server = setupServer(
   rest.get('https://thesimpsonsquoteapi.glitch.me/quotes?count=20', (req, res, ctx) => res(ctx.json([ characterData ])) 
   ), 
 ) 
@@ -43,7 +43,6 @@ describe('Main', () => {
 
     await waitFor(() => {
       const query = screen.getAllByText(/homer/i);
-      screen.debug();
       expect(query[0]).toBeInTheDocument();
     }, { timeout: 8000 })
   

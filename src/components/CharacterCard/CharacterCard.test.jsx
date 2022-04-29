@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import CharacterCard from './CharacterCard';
-import { characterData } from '../../services/characterData'
-
+import { characterData, homer } from '../../services/characterData'
+import { rest } from 'msw'
+import { server } from '../../views/Main/Main.test'
 
 test('Should render a character information on card', () => {
+    server.use(
+        rest.get('https://thesimpsonsquoteapi.glitch.me/quotes?count=20', (req, res, ctx) => res(ctx.json([ characterData ])))
+      ) 
     render(
         <CharacterCard {...characterData} />
     )
@@ -22,11 +26,14 @@ test('Should render a character information on card', () => {
 
 
 test('Should ensure the user object received as prop in specified order', () => {
+    server.use(
+        rest.get('https://thesimpsonsquoteapi.glitch.me/quotes', (req, res, ctx) => res(ctx.json([ homer ])))
+      ) 
     render(
-        <CharacterCard {...characterData} />
+        <CharacterCard {...homer} />
     )
-    expect(characterData).toHaveProperty('image');
-    expect(characterData).toHaveProperty('character');
-    expect(characterData).toHaveProperty('quote')
+    expect(homer).toHaveProperty('image');
+    expect(homer).toHaveProperty('character');
+    expect(homer).toHaveProperty('quote') 
 
 });
