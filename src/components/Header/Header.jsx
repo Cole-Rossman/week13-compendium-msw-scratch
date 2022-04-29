@@ -1,7 +1,8 @@
 import React from 'react'
+import headerstyle from './Header.css'
 
 export default function Header() {
   return (
-    <div>Header</div>
+    <header>Simpsons Compendium</header>
   )
 }
