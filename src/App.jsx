@@ -1,3 +1,12 @@
+import Header from './components/Header/Header'
+import Main from './views/Main/Main'
+
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+  <div>
+    <Header />
+    <Main />
+  </div>
+  );
 }
