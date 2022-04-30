@@ -9,7 +9,7 @@ test('Should render a character information on card', () => {
         rest.get('https://thesimpsonsquoteapi.glitch.me/quotes?count=20', (req, res, ctx) => res(ctx.json([ characterData ])))
       ) 
     render(
-        <CharacterCard {...characterData} />
+        <CharacterCard />
     )
         // for heading level 3 is h3 and level 4 is h4
     const characterName = screen.getByRole('heading', {level: 3 });
